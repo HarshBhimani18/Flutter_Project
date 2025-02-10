@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/about_page/aboutUs.dart';
 import 'package:flutter_app/user.dart';
 import 'package:flutter_app/user_add_page/addUser.dart';
+import 'package:flutter_app/user_favourite_list/userFavourite.dart';
 import 'package:flutter_app/user_list_page/userList.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -89,7 +90,7 @@ class _FirstPageState extends State<FirstPage> {
               Aboutus();
             }),
             MenuButtonView("About Us", Icons.info, () {
-              // Navigate to about us page
+              Userfavourite();
             }),
           ],
         ),
