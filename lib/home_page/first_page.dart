@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/about_page/aboutUs.dart';
 import 'package:flutter_app/user.dart';
 import 'package:flutter_app/user_add_page/addUser.dart';
 import 'package:flutter_app/user_list_page/userList.dart';
@@ -19,6 +20,7 @@ class _FirstPageState extends State<FirstPage> {
       users.add(user);
     });
   }
+
   void _updateUsersList(List<User> updatedUsers) {
     setState(() {
       users = updatedUsers;
@@ -42,7 +44,7 @@ class _FirstPageState extends State<FirstPage> {
           const SizedBox(height: 8),
           Text(
             label,
-            style: GoogleFonts.robotoSlab(color: Colors.white , fontSize: 20),
+            style: GoogleFonts.robotoSlab(color: Colors.white, fontSize: 20),
           ),
         ],
       ),
@@ -56,9 +58,7 @@ class _FirstPageState extends State<FirstPage> {
         backgroundColor: Colors.red,
         title: Text(
           "Matrimonial",
-          style: GoogleFonts.pacifico(
-            fontSize: 33
-          ),
+          style: GoogleFonts.pacifico(fontSize: 33),
         ),
       ),
       body: Padding(
@@ -80,12 +80,13 @@ class _FirstPageState extends State<FirstPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Userlist(users: users, onUsersUpdated: _updateUsersList),
+                  builder: (context) =>
+                      Userlist(users: users, onUsersUpdated: _updateUsersList),
                 ),
               );
             }),
             MenuButtonView("Favorites", Icons.favorite, () {
-              // Navigate to favorite list page
+              Aboutus();
             }),
             MenuButtonView("About Us", Icons.info, () {
               // Navigate to about us page
