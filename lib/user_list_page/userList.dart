@@ -61,33 +61,37 @@ class _UserlistState extends State<Userlist> {
   }
 
   void _editUser(int index) {
+    User userToEdit = filteredUsers[index]; // Get the correct user
+
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => AddUserPage(
-          user: filteredUsers[index],
+          user: userToEdit,
           onUserAdded: (updatedUser) {
             setState(() {
-              int userIndex = userList.indexOf(filteredUsers[index]);
-              userList[userIndex] = updatedUser;
+              int userIndex = userList.indexOf(userToEdit);
+              if (userIndex != -1) {
+                userList[userIndex] = updatedUser;
+              }
               filteredUsers[index] = updatedUser;
               widget.onUsersUpdated(List.from(userList));
             });
-            Navigator.pop(context);
           },
         ),
       ),
     );
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("User List"),
-        centerTitle: true,
-        elevation: 0,
+        title: Text(widget.users == null ? "Add User" : "Edit User"),
       ),
+
       body: Column(
         children: [
           Padding(
