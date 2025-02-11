@@ -49,8 +49,6 @@ class _AddUserPageState extends State<AddUserPage> {
       _gender = widget.user!.gender;
       _hobbies.clear();
       _hobbies.addAll(widget.user!.hobbies);
-
-      // ✅ Solution 1: Clear password fields when editing
       _passwordController.text = '';
       _confirmPasswordController.text = '';
     }
@@ -99,8 +97,6 @@ class _AddUserPageState extends State<AddUserPage> {
                 const SizedBox(height: 16),
                 _buildHobbiesSection(),
                 const SizedBox(height: 16),
-
-                // ✅ Solution 2: Hide password fields when editing
                 if (!isEditing) ...[
                   _buildTextField(_passwordController, "Password", "Enter your password", TextInputType.text, isPassword: true),
                   const SizedBox(height: 16),
