@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/user.dart';
@@ -88,8 +90,10 @@ class _UserlistState extends State<Userlist> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.pink[100],
       appBar: AppBar(
-        title: Text(widget.users == null ? "Add User" : "Edit User"),
+        backgroundColor: Colors.pink,
+        title: Text("User List",style: TextStyle(color: Colors.white),),
       ),
 
       body: Column(
@@ -100,6 +104,7 @@ class _UserlistState extends State<Userlist> {
               onChanged: _filterUsers,
               decoration: const InputDecoration(
                 hintText: "Search by name",
+                hintStyle: TextStyle(color: Colors.black),
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(),
               ),
@@ -126,11 +131,11 @@ class _UserlistState extends State<Userlist> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 4),
-                        Text("Email: ${user.email}"),
+                        Text(user.email),
                         const SizedBox(height: 4),
-                        Text("Mobile: ${user.mobile}"),
+                        Text(user.mobile),
                         const SizedBox(height: 4),
-                        Text("Gender: ${user.gender}"),
+                        Text(user.gender),
                       ],
                     ),
                     trailing: Row(

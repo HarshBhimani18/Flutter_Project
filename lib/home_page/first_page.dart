@@ -32,8 +32,9 @@ class _FirstPageState extends State<FirstPage> {
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.blue,
-        shadowColor: Colors.black26,
+        backgroundColor: Colors.pink,
+        shadowColor: Colors.pinkAccent,
+
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50),
         ),
@@ -55,11 +56,12 @@ class _FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.pink[100],
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.pink,
         title: Text(
           "Matrimonial",
-          style: GoogleFonts.pacifico(fontSize: 33),
+          style: GoogleFonts.pacifico(fontSize: 33,color: Colors.white),
         ),
       ),
       body: Padding(
@@ -87,11 +89,19 @@ class _FirstPageState extends State<FirstPage> {
               );
             }),
             MenuButtonView("Favorites", Icons.favorite, () {
-              Aboutus();
-            }),
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Userfavourite()),
+              );            }),
             MenuButtonView("About Us", Icons.info, () {
-              Userfavourite();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AboutPage(
+
+                )),
+              );
             }),
+
           ],
         ),
       ),

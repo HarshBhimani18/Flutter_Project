@@ -73,8 +73,10 @@ class _AddUserPageState extends State<AddUserPage> {
     bool isEditing = widget.user != null;
 
     return Scaffold(
+      backgroundColor: Colors.pink[50],
       appBar: AppBar(
-        title: Text(isEditing ? "Edit User" : "Add User"),
+        backgroundColor: Colors.pink[500],
+        title: Text(isEditing ? "Edit User" : "Add User",style: TextStyle(color: Colors.white),),
         centerTitle: true,
       ),
       body: Padding(
@@ -107,10 +109,11 @@ class _AddUserPageState extends State<AddUserPage> {
                 ElevatedButton(
                   onPressed: _submitForm,
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                    backgroundColor: Colors.pinkAccent,
                   ),
-                  child: Text(isEditing ? "Update" : "Submit", style: const TextStyle(fontSize: 16)),
+                  child: Text(isEditing ? "Update" : "Submit", style: const TextStyle(fontSize: 23,color: Colors.white)),
                 ),
               ],
             ),
@@ -125,8 +128,9 @@ class _AddUserPageState extends State<AddUserPage> {
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
+        labelStyle: TextStyle(color: Colors.black),
         hintText: hint,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),borderSide: BorderSide(color: Colors.pink)),
       ),
       keyboardType: keyboardType,
       obscureText: isPassword,
@@ -161,7 +165,7 @@ class _AddUserPageState extends State<AddUserPage> {
       value: _selectedCountryCode,
       decoration: InputDecoration(
         labelText: "Country Code",
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),borderSide: BorderSide(color: Colors.pink)),
       ),
       items: _countryCodes.map((code) => DropdownMenuItem(value: code, child: Text(code))).toList(),
       onChanged: (value) => setState(() => _selectedCountryCode = value!),
@@ -174,7 +178,8 @@ class _AddUserPageState extends State<AddUserPage> {
       child: InputDecorator(
         decoration: InputDecoration(
           labelText: "Date of Birth",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+          labelStyle: TextStyle(color: Colors.pink),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),borderSide: BorderSide(color: Colors.pink)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -200,12 +205,20 @@ class _AddUserPageState extends State<AddUserPage> {
     return Wrap(
       spacing: 8,
       children: _hobbyOptions.map((hobby) {
-        return FilterChip(label: Text(hobby), selected: _hobbies.contains(hobby), onSelected: (selected) {
-          setState(() => selected ? _hobbies.add(hobby) : _hobbies.remove(hobby));
-        });
+        return FilterChip(
+          label: Text(hobby),
+          selected: _hobbies.contains(hobby),
+          onSelected: (selected) {
+            setState(() => selected ? _hobbies.add(hobby) : _hobbies.remove(hobby));
+          },
+          backgroundColor: Colors.pink[400], // Background color for unselected state
+          selectedColor: Colors.pink, // Background color for selected state
+          labelStyle: TextStyle(color: Colors.white), // Label color
+        );
       }).toList(),
     );
   }
+
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {

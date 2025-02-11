@@ -16,7 +16,7 @@ class _AdduserState extends State<Userfavourite> {
           print("user favourite");
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.pink,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),
           ),
